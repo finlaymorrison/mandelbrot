@@ -1,0 +1,7 @@
+.qmake.stash
+*.out
+*.o
+mandelbrot
+moc_predefs.h
+moc_window.cpp
+Makefile
