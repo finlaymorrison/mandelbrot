@@ -1,3 +1,14 @@
+/*
+ * File: mandelbrot.cpp
+ * File Created: Thursday, 18th March 2021 10:47:22 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 1:09:49 pm
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com>)
+ * -----
+ * Copyright (CC BY-SA) - 2021 Finlay Morrison
+ */
+
 #include "include/mandelbrot.h"
 
 #include <complex>

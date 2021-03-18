@@ -1,3 +1,14 @@
+/*
+ * File: window.h
+ * File Created: Thursday, 18th March 2021 10:31:13 am
+ * Author: Finlay Morrison (morrison.fin02@gmail.com)
+ * -----
+ * Last Modified: Thursday, 18th March 2021 1:10:18 pm
+ * Modified By: Finlay Morrison (morrison.fin02@gmail.com>)
+ * -----
+ * Copyright (CC BY-SA) - 2021 Finlay Morrison
+ */
+
 #include <QMainWindow>
 #include <QPaintEvent>
 

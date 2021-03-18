@@ -5,3 +5,4 @@ mandelbrot
 moc_predefs.h
 moc_window.cpp
 Makefile
+.vscode
