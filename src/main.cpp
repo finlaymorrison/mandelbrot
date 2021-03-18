@@ -9,18 +9,15 @@
  * Copyright (CC BY-SA) - 2021 Finlay Morrison
  */
 
-#include <iostream>
-#include <QApplication>
+#include "include/main-window.h"
 
-#include "include/mandelbrot.h"
+#include <QApplication>
 
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
-    mandelbrot window;
-    window.resize(1000,1000);
-    window.setWindowTitle("Mandelbrot");
+    MainWindow window(1000, 1000, "Mandelbrot");
     window.show();
 
     return app.exec();

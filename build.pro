@@ -1,11 +1,11 @@
 TEMPLATE = app
-TARGET = prog
-INCLUDEPATH += . ../img ../src/includes
+TARGET = mandelbrot
+INCLUDEPATH += .
 
 SOURCES +=  src/*.cpp
 
 HEADERS +=  src/include/*.h
 
-CONFIG += CONSOLE silent
+CONFIG += CONSOLE silent release
 
 QT += core gui widgets

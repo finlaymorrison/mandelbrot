@@ -11,28 +11,36 @@
 
 #include <QWidget>
 #include <QPaintEvent>
+#include <QMainWindow>
 
 #include <complex>
 
-struct img_bounds
+struct ImgBounds
 {
     double x_min, x_max;
     double y_min, y_max;
+
+    ImgBounds(double x_min, double x_max, double y_min, double y_max);
 };
 
-class mandelbrot : public QWidget
+class Mandelbrot : public QWidget
 {
     Q_OBJECT
 
 private:
     double min, max;
+    int max_iterations;
+    QMainWindow *parent;
 
     static int check(std::complex<double> test_num, int iteration_limit);
-    static img_bounds get_bounds(int min, int max, int width, int height);
+    static ImgBounds get_bounds(int min, int max, int width, int height);
+
+public slots:
+    void zoom_in_slot();
+    void zoom_out_slot();
 
 public:
-    mandelbrot(double min=-2, double max=2);
+    Mandelbrot(double min=-2, double max=2, int max_iterations=100, QMainWindow *parent=nullptr);
 
     void paintEvent(QPaintEvent *event) override;
-
 };

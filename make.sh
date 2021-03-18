@@ -2,4 +2,4 @@
 
 qmake
 make
-./prog
+./mandelbrot
