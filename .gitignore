@@ -2,8 +2,8 @@
 *.out
 *.o
 mandelbrot
-moc_predefs.h
-moc_window.cpp
+moc_*.h
+moc_*.cpp
 Makefile
 .vscode
 prog
