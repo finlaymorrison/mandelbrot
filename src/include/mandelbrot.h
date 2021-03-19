@@ -41,6 +41,11 @@ public slots:
     void zoom_in_slot();
     void zoom_out_slot();
 
+    void translate_xp_slot();
+    void translate_xn_slot();
+    void translate_yp_slot();
+    void translate_yn_slot();
+
 public:
     Mandelbrot(double min=-2, double max=2, int max_iterations=100, QMainWindow *parent=nullptr);
 

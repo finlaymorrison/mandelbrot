@@ -99,7 +99,7 @@ void Mandelbrot::paint_mandelbrot()
     double proj_img_h = real_img_h / disp_img_h;
 
     double proj_img_offeset_w = true_img_bounds.x_min - disp_img_bounds.x_min;
-    double proj_img_offeset_h = disp_img_bounds.y_max - true_img_bounds.y_max;
+    double proj_img_offeset_h = true_img_bounds.y_min - disp_img_bounds.y_min;
 
     double pixels_per_unit_w = width() / disp_img_w;
     double pixels_per_unit_h = height() / disp_img_h;
@@ -123,12 +123,15 @@ void Mandelbrot::zoom_in(int num)
 {
     constexpr double zoom_amount = 1.0 / 1.1;
 
+    double size_inc_h = (disp_img_bounds.x_max - disp_img_bounds.x_min) * zoom_amount - (disp_img_bounds.x_max - disp_img_bounds.x_min);
+    double size_inc_v = (disp_img_bounds.y_max - disp_img_bounds.y_min) * zoom_amount - (disp_img_bounds.y_max - disp_img_bounds.y_min);
+
     while(num--)
     {
-        disp_img_bounds.y_max *= zoom_amount;
-        disp_img_bounds.y_min *= zoom_amount;
-        disp_img_bounds.x_max *= zoom_amount;
-        disp_img_bounds.x_min *= zoom_amount;
+        disp_img_bounds.y_max += size_inc_v;
+        disp_img_bounds.y_min -= size_inc_v;
+        disp_img_bounds.x_max += size_inc_h;
+        disp_img_bounds.x_min -= size_inc_h;
     }
 
     repaint();
@@ -142,17 +145,74 @@ void Mandelbrot::zoom_out(int num)
 {
     constexpr double zoom_amount = 1.1;
 
+    double size_inc_h = (disp_img_bounds.x_max - disp_img_bounds.x_min) * zoom_amount - (disp_img_bounds.x_max - disp_img_bounds.x_min);
+    double size_inc_v = (disp_img_bounds.y_max - disp_img_bounds.y_min) * zoom_amount - (disp_img_bounds.y_max - disp_img_bounds.y_min);
+
     while(num--)
     {
-        disp_img_bounds.y_max *= zoom_amount;
-        disp_img_bounds.y_min *= zoom_amount;
-        disp_img_bounds.x_max *= zoom_amount;
-        disp_img_bounds.x_min *= zoom_amount;
+        disp_img_bounds.y_max += size_inc_v;
+        disp_img_bounds.y_min -= size_inc_v;
+        disp_img_bounds.x_max += size_inc_h;
+        disp_img_bounds.x_min -= size_inc_h;
     }
 
     repaint();
-
     update_image();
+    repaint();
+}
 
+void Mandelbrot::translate_xp_slot()
+{
+    double move_amount = 0.1;
+
+    double width = disp_img_bounds.x_max - disp_img_bounds.x_min;
+
+    disp_img_bounds.x_min += width * move_amount;
+    disp_img_bounds.x_max += width * move_amount;
+
+    repaint();
+    update_image();
+    repaint();
+}
+
+void Mandelbrot::translate_xn_slot()
+{
+    double move_amount = 0.1;
+
+    double width = disp_img_bounds.x_max - disp_img_bounds.x_min;
+
+    disp_img_bounds.x_min -= width * move_amount;
+    disp_img_bounds.x_max -= width * move_amount;
+
+    repaint();
+    update_image();
+    repaint();
+}
+
+void Mandelbrot::translate_yp_slot()
+{
+    double move_amount = 0.1;
+    
+    double height = disp_img_bounds.y_max - disp_img_bounds.y_min;
+
+    disp_img_bounds.y_min += height * move_amount;
+    disp_img_bounds.y_max += height * move_amount;
+
+    repaint();
+    update_image();
+    repaint();
+}
+
+void Mandelbrot::translate_yn_slot()
+{
+    double move_amount = 0.1;
+
+    double height = disp_img_bounds.y_max - disp_img_bounds.y_min;
+
+    disp_img_bounds.y_min -= height * move_amount;
+    disp_img_bounds.y_max -= height * move_amount;
+
+    repaint();
+    update_image();
     repaint();
 }

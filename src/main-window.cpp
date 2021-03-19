@@ -38,6 +38,28 @@ MainWindow::MainWindow(int width, int height, QString title)
 
     toolbar->addSeparator();
 
+    QPixmap translate_left_pix("img/left.png");
+    QAction *translate_left_action = toolbar->addAction(QIcon(translate_left_pix), "Translate Left");
+    translate_left_action->setShortcut(Qt::Key_A);
+    connect(translate_left_action, &QAction::triggered, mandelbrot, &Mandelbrot::translate_xn_slot);
+
+    QPixmap translate_up_pix("img/up.png");
+    QAction *translate_up_action = toolbar->addAction(QIcon(translate_up_pix), "Translate Up");
+    translate_up_action->setShortcut(Qt::Key_W);
+    connect(translate_up_action, &QAction::triggered, mandelbrot, &Mandelbrot::translate_yn_slot);
+
+    QPixmap translate_down_pix("img/down.png");
+    QAction *translate_down_action = toolbar->addAction(QIcon(translate_down_pix), "Translate Down");
+    translate_down_action->setShortcut(Qt::Key_S);
+    connect(translate_down_action, &QAction::triggered, mandelbrot, &Mandelbrot::translate_yp_slot);
+
+    QPixmap translate_right_pix("img/right.png");
+    QAction *translate_right_action = toolbar->addAction(QIcon(translate_right_pix), "Translate Right");
+    translate_right_action->setShortcut(Qt::Key_D);
+    connect(translate_right_action, &QAction::triggered, mandelbrot, &Mandelbrot::translate_xp_slot);
+
+    toolbar->addSeparator();
+
     QPixmap quit_pix("img/quit.png");
     QAction *quit_action = toolbar->addAction(QIcon(quit_pix), "Quit");
     connect(quit_action, &QAction::triggered, qApp, &QApplication::quit);
