@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
-    MainWindow window(1000, 1000, "Mandelbrot");
+    MainWindow window(800, 800, "Mandelbrot");
     window.show();
 
     return app.exec();

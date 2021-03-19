@@ -51,16 +51,10 @@ void MainWindow::wheelEvent(QWheelEvent *event)
     int clicks = event->delta() / 120;
     if (clicks > 0)
     {
-        for (int i = 0; i < clicks; ++i)
-        {
-            mandelbrot->zoom_in_slot();
-        }
+        mandelbrot->zoom_in(clicks);
     }
     else
     {
-        for (int i = clicks; i < 0; ++i)
-        {
-            mandelbrot->zoom_out_slot();
-        }
+        mandelbrot->zoom_out(-clicks);
     }
 }

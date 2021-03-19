@@ -19,8 +19,6 @@ struct ImgBounds
 {
     double x_min, x_max;
     double y_min, y_max;
-
-    ImgBounds(double x_min, double x_max, double y_min, double y_max);
 };
 
 class Mandelbrot : public QWidget
@@ -28,12 +26,16 @@ class Mandelbrot : public QWidget
     Q_OBJECT
 
 private:
-    double min, max;
+    ImgBounds true_img_bounds;
+    ImgBounds disp_img_bounds;
+    QPixmap image;
     int max_iterations;
     QMainWindow *parent;
 
+    void update_image();
     static int check(std::complex<double> test_num, int iteration_limit);
-    static ImgBounds get_bounds(int min, int max, int width, int height);
+    static ImgBounds get_bounds(double min, double max, double width, double height);
+    void paint_mandelbrot();
 
 public slots:
     void zoom_in_slot();
@@ -41,6 +43,9 @@ public slots:
 
 public:
     Mandelbrot(double min=-2, double max=2, int max_iterations=100, QMainWindow *parent=nullptr);
+
+    void zoom_in(int num);
+    void zoom_out(int num);
 
     void paintEvent(QPaintEvent *event) override;
 };
